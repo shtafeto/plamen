@@ -1,0 +1,28 @@
+function getPatternString(n, numberOfMs = 1) {
+  // създаване на масив за M
+  var res = createEmptyGrid(n * 5, n + 1);
+  // начало долен ляв ъгъл
+  var x = 0, y = n, goingUp = true;
+  // While x is not at its maximum value
+  while (x <= n * 5 - n) {
+    //заместване на n в x с '*'
+    res[y].splice(x, n, ...new Array(n).fill('*'));
+    // смяна на посока
+    if ((y === n && !goingUp) || (y === 0 && goingUp)) { goingUp = !goingUp; }
+    x++;
+    y+= goingUp ? -1 : 1;
+  }
+  return res.map(row => loopStr(row.join(''), numberOfMs)).join('\n');
+}
+
+function createEmptyGrid(x, y) {
+  return new Array(y).fill(null).map(function() {
+    return new Array(x).fill('-');
+  });
+}
+
+function loopStr(str, n) {
+  return new Array(n).fill(str).join('');
+}
+
+console.log(getPatternString(3, 2));

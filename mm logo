@@ -1,3 +1,5 @@
+//Поради спефициката на javascipt препоръчвам тестването да се осъществява в http://playcode.io/empty
+
 function getPatternString(n, numberOfMs = 1) {
   // създаване на масив за M
   var res = createEmptyGrid(n * 5, n + 1);
